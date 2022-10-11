@@ -59,22 +59,22 @@ public class Customer
             var amount = Cart.Count(prod => prod == product);
             var amountCost = amount * product.Price;
 
-            result += $"{product}\nAntal: {amount} \nTotalt: {amountCost} SEK";
+            result += $"{product}\nAntal: {amount} \nTotalt: {amountCost} SEK\n";
         }
         result += $"\nTotal kostnad: {PriceTotal()} SEK\n";
 
         return result;
     }
 
-    public float PriceTotal()
+    public virtual double PriceTotal()
     {
-        float total = 0;
+        double total = 0;
 
         foreach (var product in Cart)
         {
             total += product.Price;
         }
-        return total;
+        return Math.Round(total, 2);
     }
 
     public bool VerifyPassword(string inputPass)

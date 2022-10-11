@@ -5,20 +5,20 @@
 List<Product> stock = new List<Product>();
 stock.AddRange(new[]
 {
-    new Product ("Svärd", 59.90F),
-    new Product ("Sköld", 45.50F),
-    new Product ("Pilbåge", 59.90F)
+    new Product ("Svärd", 59.90),
+    new Product ("Sköld", 45.50),
+    new Product ("Pilbåge", 59.90)
 });
 
 List<Customer> customers = new List<Customer>();
-customers.AddRange(new[]
+customers.AddRange(new Customer[]
 {
-    new Customer ("Knatte", "123") {Cart = {stock[1], stock[2]}},
-    new Customer ("Fnatte", "321") {Cart = {stock[1], stock[1]}},
-    new Customer ("Tjatte", "213") {Cart = {stock[0], stock[2]}}
+    new GoldCustomer ("Knatte", "123") {Cart = {stock[1], stock[2]}},
+    new SilverCustomer ("Fnatte", "321") {Cart = {stock[1], stock[1]}},
+    new BronzeCustomer ("Tjatte", "213") {Cart = {stock[0], stock[2]}}
 });
 
-// Slut på exempeldata
+// Slut på exempeldata 
 
 string input = null;
 string inputName;
@@ -126,7 +126,7 @@ void LoggedInMenu()
             case "g": 
                 Console.Clear();
                 var total = loggedInCustomer.PriceTotal();
-                Console.WriteLine($"Det blir totalt {total} gp");
+                Console.WriteLine($"Det blir totalt {total} SEK");
                 Console.WriteLine("B - Betala");
                 Console.WriteLine("T - Tillbaka");
                 input = Console.ReadLine().ToLower();
